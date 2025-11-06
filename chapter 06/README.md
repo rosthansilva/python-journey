@@ -1,47 +1,47 @@
-## 🛠️ Desafio 6: Python e Dagger - O Pipeline Definido em Código
+## 🛠️ Challenge 6: Python and Dagger - The Pipeline Defined in Code
 
-Vamos usar a biblioteca oficial do Dagger em Python para definir uma *pipeline* simples que simula um processo de *build*, teste e *push* de uma imagem, tudo orquestrado pelo Dagger.
+Let's use the official Dagger Python library to define a simple *pipeline* that simulates a *build*, test, and image *push* process, all orchestrated by Dagger.
 
-### Pré-requisitos Mentais (Você precisará simular a instalação do Dagger SDK):
+### Mental Prerequisites (You will need to simulate Dagger SDK installation):
 
-Para este desafio, você deve imaginar que a biblioteca `@dagger.io/dagger` está instalada e que você tem um motor Dagger rodando no seu Colima (`dagger start`).
+For this challenge, you should imagine that the library `@dagger.io/dagger` is installed and that you have a running Dagger engine on your Colima (`dagger start`).
 
-### Cenário: Pipeline Simples de CI/CD para uma Aplicação Web
+### Scenario: Simple CI/CD Pipeline for a Web Application
 
-Você tem um repositório simples com um `Dockerfile` e um script de teste (`test.sh`).
+You have a simple repository with a `Dockerfile` and a test script (`test.sh`).
 
-### Tarefas:
+### Tasks:
 
-1.  **Estrutura Base do Dagger Client:**
+1.  **Base Dagger Client Structure:**
 
-      * Importe o Dagger Client: `import dagger` e `import asyncio` (pois o Dagger SDK é assíncrono).
-      * Crie a função `main()` decorada com `@dagger.with_container_engine()` para ser o ponto de entrada assíncrono do Dagger.
-      * Dentro de `main()`, inicialize o cliente: `async with dagger.AsyncClient() as client:`.
+      * Import the Dagger Client: `import dagger` and `import asyncio` (because the Dagger SDK is asynchronous).
+      * Create the `main()` function decorated with `@dagger.with_container_engine()` to be the asynchronous entry point for Dagger.
+      * Inside `main()`, initialize the client: `async with dagger.AsyncClient() as client:`.
 
-2.  **Definindo o Projeto (Contexto):**
+2.  **Defining the Project (Context):**
 
-      * Use `client.container().from_source(...)` para carregar o **diretório atual** (`.`) como o contexto do seu *pipeline*.
+      * Use `client.container().from_source(...)` to load the **current directory** (`.`) as the context for your *pipeline*.
 
-3.  **Passo 1: Build da Imagem (Build Stage):**
+3.  **Step 1: Image Build (Build Stage):**
 
-      * No seu contexto de fonte, use o método `.container()` e `.with_dockerfile()` para especificar o `Dockerfile` no diretório raiz.
-      * Use `.build(tag="myapp:test-$(date +%s)")` para construir a imagem. **Armazene o resultado (o objeto de imagem)** em uma variável, por exemplo, `built_image`.
+      * In your source context, use the `.container()` method and `.with_dockerfile()` to specify the `Dockerfile` in the root directory.
+      * Use `.build(tag="myapp:test-$(date +%s)")` to build the image. **Store the result (the image object)** in a variable, for example, `built_image`.
 
-4.  **Passo 2: Executar Testes (Test Stage):**
+4.  **Step 2: Execute Tests (Test Stage):**
 
-      * Usando a imagem que você acabou de construir (`built_image`), execute o script de teste:
-      * Use `.with_entrypoint(["/bin/sh", "-c"])` e o comando para executar o teste: `await built_image.exec(["./test.sh"])`.
-      * **Tratamento de Falha:** Para simular a falha de teste, se o `./test.sh` falhar (retornar código diferente de 0), o Dagger *automaticamente* falha o *pipeline*. Você precisa **envelopar** a chamada `await built_image.exec(...)` em um `try...except dagger.dagger.errors.ExecError as e:` para capturar a falha de teste e imprimir uma mensagem informativa.
+      * Using the image you just built (`built_image`), execute the test script:
+      * Use `.with_entrypoint(["/bin/sh", "-c"])` and the command to run the test: `await built_image.exec(["./test.sh"])`.
+      * **Failure Handling:** To simulate test failure, if `./test.sh` fails (returns a code other than 0), Dagger *automatically* fails the *pipeline*. You need to **wrap** the call `await built_image.exec(...)` in a `try...except dagger.dagger.errors.ExecError as e:` block to capture the test failure and print an informative message.
 
-5.  **Passo 3: Publicar a Imagem (Publish Stage):**
+5.  **Step 3: Publish Image (Publish Stage):**
 
-      * **SE** os testes passaram (o bloco `try` não falhou), use o objeto `built_image`.
-      * Defina a *tag* final (ex: `myapp:latest`).
-      * Use `.publish(f"seu-usuario/myapp:latest")` (substitua `seu-usuario` pelo seu nome de usuário Docker/Colima).
+      * **IF** the tests passed (the `try` block did not fail), use the `built_image` object.
+      * Define the final *tag* (e.g., `myapp:latest`).
+      * Use `.publish(f"your-user/myapp:latest")` (replace `your-user` with your Docker/Colima username).
 
-6.  **Execução Final:**
+6.  **Final Execution:**
 
-      * No final do seu *script*, adicione o código padrão para rodar a função `main`:
+      * At the end of your *script*, add the standard code to run the `main` function:
         ```python
         if __name__ == "__main__":
             asyncio.run(main())
@@ -49,8 +49,12 @@ Você tem um repositório simples com um `Dockerfile` e um script de teste (`tes
 
 -----
 
-### O que você deve me mostrar:
+### What you should show me:
 
-O código Python completo do seu *script* principal (`dagger_pipeline.py`), incluindo as importações, a estrutura assíncrona, a lógica de `try/except` para os testes, e a chamada de `publish`.
+The complete Python code for your main *script* (`dagger_pipeline.py`), including imports, the asynchronous structure, the `try/except` logic for tests, and the `publish` call.
 
-Este desafio exige que você pense em termos de **grafos de execução** e **assincronicidade**, que são o coração do Dagger. Boa sorte\!
+This challenge requires you to think in terms of **execution graphs** and **asynchronicity**, which are the heart of Dagger. Good luck\!
+
+-----
+
+Which file would you like me to translate next? (e.g., `./chapter 05/README.md`, `./chapter 07/README.md`, etc.)
