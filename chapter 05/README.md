@@ -1,22 +1,22 @@
-## 🛠️ Desafio 5: Construindo uma Ferramenta CLI (`argparse`) e Simulação K8s Client
+## 🛠️ Challenge 5: Building a CLI Tool (`argparse`) and K8s Client Simulation
 
-Este desafio irá introduzir a maneira padrão de criar ferramentas de linha de comando em Python e simular o uso de uma biblioteca cliente real como o `kubernetes-client`.
+This challenge will introduce the standard way to create command-line tools in Python and simulate the use of a real client library like the `kubernetes-client`.
 
-### Cenário: Verificador de Status de Deployment CLI
+### Scenario: Deployment Status Checker CLI
 
-Você precisa de uma ferramenta rápida (CLI) para verificar o status de um *deployment* no seu cluster, recebendo o nome e o *namespace* como argumentos de linha de comando. A ferramenta deve lidar com o caso em que o *deployment* não existe.
+You need a quick tool (CLI) to check the status of a *deployment* in your cluster, receiving the name and *namespace* as command-line arguments. The tool must handle the case where the *deployment* does not exist.
 
-#### 🧠 Conceitos Chave para este Desafio:
+#### 🧠 Key Concepts for this Challenge:
 
-1.  **Módulo `argparse`**: A forma padrão em Python para criar CLIs, processando argumentos como `--name` ou `-n`.
-2.  **Classes de Serviço (OOP):** Estruturar a lógica de interação com o K8s em uma classe dedicada.
-3.  **Tratamento de Exceções Específicas:** Simular a captura de erros comuns, como "Not Found" (`404`), usando exceções personalizadas.
+1.  **`argparse` Module**: The standard way in Python to create CLIs, processing arguments like `--name` or `-n`.
+2.  **Service Classes (OOP):** Structuring interaction logic with K8s in a dedicated class.
+3.  **Specific Exception Handling:** Simulating the capture of common errors, like "Not Found" (`404`), using custom exceptions.
 
-### Tarefas:
+### Tasks:
 
-1.  **Exceção Personalizada:**
+1.  **Custom Exception:**
 
-      * Defina uma classe de exceção simples chamada `DeploymentNotFound` no topo do seu *script*. (Isto simula a exceção que uma biblioteca K8s levantaria para um erro 404).
+      * Define a simple exception class named `DeploymentNotFound` at the top of your *script*. (This simulates the exception that a K8s library would raise for a 404 error).
 
     <!-- end list -->
 
@@ -25,36 +25,36 @@ Você precisa de uma ferramenta rápida (CLI) para verificar o status de um *dep
         pass
     ```
 
-2.  **Classe `K8sService` (O Wrapper da API):**
+2.  **`K8sService` Class (The API Wrapper):**
 
-      * Crie uma classe chamada `K8sService` para encapsular a lógica do Kubernetes.
-      * Adicione um método chamado `get_deployment_status(namespace, name)`:
-          * Dentro deste método, implemente a seguinte **lógica de simulação**:
-              * Se o `name` for **`deployment-erro`** ou o `namespace` for **`ns-nao-existe`**, **levante** a exceção `DeploymentNotFound`.
-              * Caso contrário, retorne um dicionário simulando um *status* de sucesso: `{"replicas": 5, "ready_replicas": 5, "status": "Ready"}`.
+      * Create a class named `K8sService` to encapsulate the Kubernetes logic.
+      * Add a method called `get_deployment_status(namespace, name)`:
+          * Inside this method, implement the following **simulation logic**:
+              * If the `name` is **`deployment-erro`** or the `namespace` is **`ns-nao-existe`**, **raise** the `DeploymentNotFound` exception.
+              * Otherwise, return a dictionary simulating a success *status*: `{"replicas": 5, "ready_replicas": 5, "status": "Ready"}`.
 
-3.  **Função Principal (`main()` com `argparse`):**
+3.  **Main Function (`main()` with `argparse`):**
 
-      * Use o módulo **`argparse`** para criar um *parser* de argumentos.
-      * Defina dois argumentos **obrigatórios**:
-          * `--namespace` (ou `-n`), com `help='O namespace do deployment.'`.
-          * `--name` (ou `-d`), com `help='O nome do deployment.'`.
-      * No corpo da sua função `main()`:
-          * Parse os argumentos.
-          * Crie uma instância de `K8sService`.
-          * Use um bloco **`try...except`** para:
-              * Chamar `service.get_deployment_status(...)`.
-              * **Em caso de sucesso (bloco `try`):** Imprima o status do *deployment* de forma clara e amigável.
-              * **Capturar a exceção `DeploymentNotFound`:** Imprima uma mensagem de erro específica e útil para o usuário, indicando qual *deployment* não foi encontrado.
+      * Use the **`argparse`** module to create an argument *parser*.
+      * Define two **required** arguments:
+          * `--namespace` (or `-n`), with `help='The namespace of the deployment.'`.
+          * `--name` (or `-d`), with `help='The name of the deployment.'`.
+      * In the body of your `main()` function:
+          * Parse the arguments.
+          * Create an instance of `K8sService`.
+          * Use a **`try...except`** block to:
+              * Call `service.get_deployment_status(...)`.
+              * **On success (in the `try` block):** Print the deployment *status* clearly and friendly.
+              * **Catch the `DeploymentNotFound` exception:** Print a specific and useful error message to the user, indicating which *deployment* was not found.
 
 -----
 
-### Como Testar (Simulação do Terminal):
+### How to Test (Terminal Simulation):
 
-Seu código deve funcionar de forma semelhante a estes comandos (você pode simular esta execução na sua cabeça ou usando a linha de comando):
+Your code should work similarly to these commands (you can simulate this execution in your head or using the command line):
 
-1.  **Sucesso:** `python meu_script.py -n prod -d api-gateway`
-2.  **Falha (Deployment Não Encontrado):** `python meu_script.py -n staging -d deployment-erro`
-3.  **Falha (Namespace Não Encontrado):** `python meu_script.py -n ns-nao-existe -d algum-deployment`
+1.  **Success:** `python my_script.py -n prod -d api-gateway`
+2.  **Failure (Deployment Not Found):** `python my_script.py -n staging -d deployment-erro`
+3.  **Failure (Namespace Not Found):** `python my_script.py -n ns-nao-existe -d algum-deployment`
 
-**Qual será a estrutura do seu *script* `verificador_k8s.py`?** Estou ansioso para ver como você lida com a interface de linha de comando\!
+**What will the structure of your `verificador_k8s.py` script be?** I look forward to seeing how you handle the command-line interface\!
