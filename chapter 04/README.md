@@ -1,47 +1,46 @@
-## 🛠️ Desafio 4: A Conexão com o Shell - Módulo `subprocess`
+## 🛠️ Challenge 4: Connecting to the Shell - `subprocess` Module
 
-Vamos agora para a **Fase 3: Automação Avançada**, onde o Python se encontra diretamente com suas ferramentas: **Docker e Kubernetes no seu Colima/macOS**. O ponto-chave aqui é a execução de comandos externos, o que é fundamental para qualquer *script* de automação.
+Let's move on to **Phase 3: Advanced Automation**, where Python meets directly with your tools: **Docker and Kubernetes on your Colima/macOS**. The key point here is the execution of external commands, which is fundamental for any automation *script*.
 
+The Python `subprocess` module is your primary friend when you need your script to execute commands like `docker`, `kubectl`, `colima`, or `dagger`.
 
-O módulo `subprocess` do Python é o seu principal amigo quando você precisa que seu script execute comandos como `docker`, `kubectl`, `colima`, ou `dagger`.
+### Scenario: Docker Image Management
 
-### Cenário: Gerenciamento de Imagens Docker
+You need a system health *script* that checks the Docker status and lists all images in your Colima environment.
 
-Você precisa de um *script* de saúde do sistema que verifique o status do Docker e liste todas as imagens no seu ambiente Colima.
+#### 🧠 Key Concepts for this Challenge:
+1.  **`subprocess` Module**: The correct and safe way to execute external commands.
+2.  **`subprocess.run()`**: The modern and recommended function.
+3.  **Output (stdout) and Error (stderr)**: Capturing and handling the command's response.
+4.  **String Parsing**: Transforming terminal text output into structured data (like lists or dictionaries).
 
-#### 🧠 Conceitos Chave para este Desafio:
-1.  **Módulo `subprocess`**: A forma correta e segura de executar comandos externos.
-2.  **`subprocess.run()`**: A função moderna e recomendada.
-3.  **Saída (stdout) e Erro (stderr)**: Capturar e lidar com a resposta do comando.
-4.  **Parsing de String**: Transformar a saída de texto do terminal em dados estruturados (como listas ou dicionários).
+### Tasks:
 
-### Tarefas:
-
-1.  **Função de Execução Segura:**
-    * Crie uma função chamada `executar_comando(comando_em_lista)`. O `comando_em_lista` deve ser uma lista de *strings* (ex: `['docker', 'images']`).
+1.  **Secure Execution Function:**
+    * Create a function called `executar_comando(comando_em_lista)`. The `comando_em_lista` should be a list of *strings* (e.g., `['docker', 'images']`).
     * Use `subprocess.run(comando_em_lista, capture_output=True, text=True, check=True)`:
-        * `capture_output=True` armazena o `stdout` e `stderr`.
-        * `text=True` decodifica a saída como texto.
-        * `check=True` fará o Python gerar uma exceção se o comando retornar um código de erro (útil para detectar falhas).
-    * A função deve retornar a saída do comando (`resultado.stdout`).
-    * *Tratamento de Erro:* Adicione um bloco `try...except` para capturar a exceção `subprocess.CalledProcessError` e imprima uma mensagem de erro útil (incluindo `resultado.stderr`) antes de retornar `None`.
+        * `capture_output=True` stores the `stdout` and `stderr`.
+        * `text=True` decodes the output as text.
+        * `check=True` will cause Python to raise an exception if the command returns an error code (useful for detecting failures).
+    * The function must return the command's output (`resultado.stdout`).
+    * *Error Handling:* Add a `try...except` block to catch the `subprocess.CalledProcessError` exception and print a useful error message (including `resultado.stderr`) before returning `None`.
 
-2.  **Executar e Verificar o Status do Docker:**
-    * Use sua função para executar `docker info`.
-    * Imprima a mensagem: "--- Status do Docker (Colima) ---" seguida pela saída do comando.
+2.  **Execute and Check Docker Status:**
+    * Use your function to execute `docker info`.
+    * Print the message: "--- Docker Status (Colima) ---" followed by the command output.
 
-3.  **Parsing de Imagens (Simulado):**
-    * Use sua função para executar `docker images`.
-    * A saída é uma tabela. Seu desafio é transformá-la em uma lista de dicionários, onde cada dicionário representa uma imagem com chaves como `REPOSITORY`, `TAG`, `IMAGE ID`, e `SIZE`.
-    * *DICA AVANÇADA:* Para simplificar o *parsing*, execute `docker images --format "{{.Repository}} | {{.Tag}} | {{.ID}} | {{.Size}}"` para obter um formato mais fácil de separar (usando `split('|')`).
+3.  **Image Parsing (Simulated):**
+    * Use your function to execute `docker images`.
+    * The output is a table. Your challenge is to transform it into a list of dictionaries, where each dictionary represents an image with keys like `REPOSITORY`, `TAG`, `IMAGE ID`, and `SIZE`.
+    * *ADVANCED TIP:* To simplify *parsing*, execute `docker images --format "{{.Repository}} | {{.Tag}} | {{.ID}} | {{.Size}}"` to get a format easier to split (using `split('|')`).
 
-4.  **Ação de Automação (Simulada):**
-    * **Identificação:** Percorra sua lista de dicionários de imagens.
-    * **Condição:** Identifique qualquer imagem que tenha a `TAG` igual a `latest` (uma tag que se move e pode ser perigosa em produção).
-    * **Comando de Ação:** Imprima na tela o comando **simulado** que você usaria para marcar (`tag`) essa imagem com um novo nome, por exemplo, `docker tag [IMAGE_ID] [REPOSITORY]:[DATA_DE_HOJE]`.
+4.  **Automation Action (Simulated):**
+    * **Identification:** Iterate over your list of image dictionaries.
+    * **Condition:** Identify any image that has the `TAG` equal to `latest` (a moving tag that can be dangerous in production).
+    * **Action Command:** Print the **simulated** command you would use to tag that image with a new name, for example, `docker tag [IMAGE_ID] [REPOSITORY]:[TODAY_S_DATE]`.
 
 ---
 
-Este desafio é a **cola** que une o Python ao mundo real do seu terminal. É a ponte essencial para a automação de *scripts* mais complexos.
+This challenge is the **glue** that connects Python to the real world of your terminal. It is the essential bridge for more complex *script* automation.
 
-**Mostre-me seu *script* Python com a função `executar_comando` e como você usa a saída do `docker images`!**
+**Show me your Python *script* with the `executar_comando` function and how you use the output from `docker images`!**
