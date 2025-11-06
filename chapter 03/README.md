@@ -1,40 +1,36 @@
-## 🛠️ Desafio 3: Modelagem Orientada a Objetos (POO) para Recursos K8s
+## 🛠️ Challenge 3: Object-Oriented Modeling (OOP) for K8s Resources
 
-O objetivo é parar de manipular dicionários JSON crus e começar a criar **Classes** que representam nossos objetos do Kubernetes.
+The goal is to stop manipulating raw JSON dictionaries and start creating **Classes** that represent our Kubernetes objects.
 
-### Cenário: Criando Classes para Gerenciamento de Contêineres
+### Scenario: Creating Classes for Container Management
 
-Vamos modelar um `Container` e um `Deployment` usando Classes Python.
+Let's model a `Container` and a `Deployment` using Python Classes.
 
-#### 🧠 Conceitos Chave para este Desafio:
-1.  **Classes e Objetos:** Definir `class`, `__init__` (o construtor), e atributos.
-2.  **Métodos:** Adicionar comportamento aos objetos.
-3.  **Método `__str__`:** Para criar uma representação amigável do objeto.
+#### 🧠 Key Concepts for this Challenge:
+1.  **Classes and Objects:** Defining `class`, `__init__` (the constructor), and attributes.
+2.  **Methods:** Adding behavior to objects.
+3.  **`__str__` Method:** To create a friendly representation of the object.
 
-### Tarefas:
+### Tasks:
 
-1.  **Classe `Container`:**
-    * Crie uma classe chamada `Container`.
-    * Seu construtor (`__init__`) deve aceitar `name` (str) e `image` (str).
-    * Adicione um método chamado `get_tag()` que retorna apenas a *tag* da imagem (a parte após o último `:`).
-    * Implemente o método especial `__str__` para que, ao imprimir um objeto `Container`, ele retorne algo como: `"Container(name='ui', image='registry/frontend:1.9.1' -> Tag: 1.9.1)"`.
+1.  **`Container` Class:**
+    * Create a class named `Container`.
+    * Its constructor (`__init__`) must accept `name` (str) and `image` (str).
+    * Add a method called `get_tag()` that returns only the image *tag* (the part after the last `:`).
+    * Implement the special method `__str__` so that when printing a `Container` object, it returns something like: `"Container(name='ui', image='registry/frontend:1.9.1' -> Tag: 1.9.1)"`.
 
-2.  **Classe `Deployment`:**
-    * Crie uma classe chamada `Deployment`.
-    * Seu construtor (`__init__`) deve aceitar `name` (str), `namespace` (str), e uma lista de objetos `Container` (inicialmente vazia).
-    * Adicione um método chamado `add_container(container_obj)` que adiciona um objeto `Container` à lista interna do *Deployment*.
-    * Adicione um método chamado `get_all_tags()` que percorre todos os contêineres associados e retorna uma **lista única** de todas as *tags* encontradas (use um `set` internamente para garantir a unicidade antes de converter para `list`, se quiser um desafio extra!).
-    * Implemente o método `__str__` para que, ao imprimir um objeto `Deployment`, ele retorne algo como: `"Deployment(name='web-frontend' in ns='staging' | Containers: 1 | Tags: ['1.9.1'])"`.
+2.  **`Deployment` Class:**
+    * Create a class named `Deployment`.
+    * Its constructor (`__init__`) must accept `name` (str), `namespace` (str), and a list of `Container` objects (initially empty).
+    * Add a method called `add_container(container_obj)` that adds a `Container` object to the *Deployment*'s internal list.
+    * Add a method called `get_all_tags()` that iterates over all associated containers and returns a **unique list** of all found *tags* (use a `set` internally to ensure uniqueness before converting to `list`, if you want an extra challenge!).
+    * Implement the `__str__` method so that when printing a `Deployment` object, it returns something like: `"Deployment(name='web-frontend' in ns='staging' | Containers: 1 | Tags: ['1.9.1'])"`.
 
-3.  **Execução e Teste:**
-    * Crie duas instâncias da classe `Container` baseadas nas imagens do desafio anterior (Ex: `Container("main", "registry.corp/auth:2.5.0")` e `Container("sidecar", "fluentd:latest")`).
-    * Crie uma instância da classe `Deployment` chamada `auth_deploy` usando os dados do primeiro item do JSON do Desafio 2 (`auth-service`, `prod`).
-    * Use o método `add_container` para adicionar os dois contêineres que você acabou de criar ao `auth_deploy`.
-    * Imprima o objeto `auth_deploy` (isso deve chamar seu `__str__`).
-    * Imprima o resultado de `auth_deploy.get_all_tags()`.
+3.  **Execution and Testing:**
+    * Create two instances of the `Container` class based on the images from the previous challenge (e.g., `Container("main", "registry.corp/auth:2.5.0")` and `Container("sidecar", "fluentd:latest")`).
+    * Create an instance of the `Deployment` class called `auth_deploy` using the data from the first JSON item of Challenge 2 (`auth-service`, `prod`).
+    * Use the `add_container` method to add the two containers you just created to `auth_deploy`.
+    * Print the `auth_deploy` object (this should call your `__str__`).
+    * Print the result of `auth_deploy.get_all_tags()`.
 
----
-
-Este desafio transforma dados brutos em **modelos de código**. Isso é fundamental para usar *SDKs* como o `kubernetes-client`, onde você manipula objetos `V1Deployment`, e não apenas dicionários.
-
-**Qual será a estrutura das suas classes `Container` e `Deployment`?** Mostre-me como você implementaria isso!
+-----

@@ -1,20 +1,20 @@
-## 🛠️ Desafio 2: Processamento de Dados e Requisições (Fase 2)
+## 🛠️ Challenge 2: Data Processing and Requests (Phase 2)
 
-Este desafio foca em dois pilares essenciais: lidar com **JSON** (o formato dominante das APIs) e simular uma interação com um serviço externo (como a API do K8s).
+This challenge focuses on two essential pillars: dealing with **JSON** (the dominant API format) and simulating an interaction with an external service (like the K8s API).
 
-### Cenário: Auditoria de Imagens em um Cluster
+### Scenario: Image Auditing in a Cluster
 
-Imagine que você precisa simular a auditoria de imagens usadas em uma lista de *deployments* que você recebeu em formato JSON de um *scanner* de segurança.
+Imagine you need to simulate auditing images used in a list of *deployments* you received in JSON format from a security *scanner*.
 
-#### 🧠 Conceitos Chave para este Desafio:
+#### 🧠 Key Concepts for this Challenge:
 
-1.  **Módulo `json`**: Para carregar e manipular dados JSON.
-2.  **Módulo `requests` (simulado)**: Para simular a obtenção de dados de uma API.
-3.  **List Comprehensions**: Uma forma *pythônica* e concisa de construir listas.
+1.  **`json` Module**: To load and manipulate JSON data.
+2.  **`requests` Module (Simulated)**: To simulate fetching data from an API.
+3.  **List Comprehensions**: A *Pythonic* and concise way to build lists.
 
-### Tarefas:
+### Tasks:
 
-1.  **Dados de Simulação (JSON):** Crie uma *string* multilinha em Python (usando aspas triplas `"""..."""`) que represente a seguinte estrutura JSON. Esta string simula uma resposta de uma API que lista *deployments*:
+1.  **Simulation Data (JSON):** Create a multiline *string* in Python (using triple quotes `"""..."""`) that represents the following JSON structure. This string simulates a response from an API listing *deployments*:
 
     ```json
     {
@@ -55,21 +55,21 @@ Imagine que você precisa simular a auditoria de imagens usadas em uma lista de 
     }
     ```
 
-2.  **Carregamento e Processamento:**
+2.  **Loading and Processing:**
 
-      * Use o módulo **`json`** para carregar a *string* acima em uma estrutura de dados Python (um *dictionary*).
-      * Use **List Comprehension** (ou *loop* `for` se preferir, mas **tente a *comprehension***) para iterar sobre todos os *deployments* na lista `items`.
-      * Para **cada *deployment***, extraia:
-          * O nome do *deployment* (`metadata.name`).
-          * O *namespace* (`metadata.namespace`).
-          * Uma **lista** de **todas as *tags*** de imagem encontradas nos contêineres (ex: `"2.5.0"`, `"latest"`, `"1.9.1"`).
+      * Use the **`json`** module to load the above *string* into a Python data structure (a *dictionary*).
+      * Use **List Comprehension** (or a `for` *loop* if you prefer, but **try the *comprehension***) to iterate over all *deployments* in the `items` list.
+      * For **each *deployment***, extract:
+          * The *deployment* name (`metadata.name`).
+          * The *namespace* (`metadata.namespace`).
+          * A **list** of **all image *tags*** found in the containers (e.g., `"2.5.0"`, `"latest"`, `"1.9.1"`).
 
-3.  **Saída Final:** Imprima na tela, de forma clara, o resultado final. O formato ideal seria uma lista de dicionários, onde cada dicionário representa um *deployment* e suas imagens.
+3.  **Final Output:** Print the final result clearly to the screen. The ideal format would be a list of dictionaries, where each dictionary represents a *deployment* and its images.
 
-**Exemplo de Saída Desejada:**
+**Desired Output Example:**
 
 ```
-Auditoria de Imagens Encontrada:
+Image Audit Found:
 [
   {'deployment': 'auth-service', 'namespace': 'prod', 'tags': ['2.5.0', 'latest']},
   {'deployment': 'web-frontend', 'namespace': 'staging', 'tags': ['1.9.1']}
@@ -78,6 +78,6 @@ Auditoria de Imagens Encontrada:
 
 -----
 
-Este desafio força você a navegar pela estrutura de um objeto aninhado (como um manifesto K8s), que é uma habilidade diária em DevOps.
+This challenge forces you to navigate the structure of a nested object (like a K8s manifest), which is a daily skill in DevOps.
 
-**Me mostre como você estruturaria seu *script* Python para resolver este desafio\!** Estou ansioso para ver sua implementação\!
+**Show me how you would structure your Python *script* to solve this challenge\!** I look forward to seeing your implementation\!
