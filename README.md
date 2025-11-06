@@ -1,4 +1,4 @@
-# 🐍 Python Power-Up para DevOps: Colima, K8s & Dagger 🚀
+# 🐍 Python Power-Up para DevOps: K8s & Dagger 🚀
 
 Bem-vindo ao meu repositório de aprendizado acelerado\! Este espaço contém *scripts* e projetos práticos desenvolvidos para solidificar meu conhecimento em Python, com um foco direto na automação de tarefas de **DevOps**, utilizando ferramentas como **Docker**, **Kubernetes** e **Dagger** no meu ambiente **macOS/Colima**.
 
