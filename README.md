@@ -1,5 +1,6 @@
-🚀 Nossa Jornada de Aprendizado Python para DevOps
-Dividiremos nosso aprendizado em fases, conectando a teoria do Python diretamente com as ferramentas que você já usa.
+# 🚀 Nossa Jornada de Aprendizado Python para DevOps
+
+> Dividiremos nosso aprendizado em fases, conectando a teoria do Python diretamente com as ferramentas que você já usa.
 
 Fase 1: Fundamentos Sólidos (O Alicerce)
 Nesta fase, vamos garantir que os pilares do Python estejam firmes.
