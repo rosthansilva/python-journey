@@ -1,15 +1,15 @@
-## 🛠️ Seu Primeiro Desafio (Fase 1)
+## 🛠️ Your First Challenge (Phase 1)
 
-Para fixar o conceito de modularização e manipulação de dados em Python, vamos criar um *script* de utilidade:
+To solidify the concept of modularity and data manipulation in Python, let's create a utility *script*:
 
-### Desafio 1: Gerador de Configuração Simples
+### Challenge 1: Simple Configuration Generator
 
-**Cenário:** Você precisa gerar rapidamente um arquivo `.yaml` para um novo *deployment* do Kubernetes, mas quer que a *tag* da imagem seja dinâmica e configurável.
+**Scenario:** You need to quickly generate a `.yaml` file for a new Kubernetes *deployment*, but you want the image *tag* to be dynamic and configurable.
 
-**Tarefas:**
+**Tasks:**
 
-1.  **Crie um Módulo (`k8s_util.py`):** Defina uma função chamada `gerar_deployment_yaml(nome_app, imagem_tag, replicas=1)`.
-2.  **Estrutura YAML:** A função deve retornar uma **string** formatada no padrão YAML (por enquanto, apenas formatação de *string* é suficiente, sem se preocupar com bibliotecas YAML complexas ainda).
+1.  **Create a Module (`k8s_util.py`):** Define a function named `gerar_deployment_yaml(nome_app, imagem_tag, replicas=1)`.
+2.  **YAML Structure:** The function must return a **string** formatted in the YAML pattern (for now, just string formatting is sufficient, without worrying about complex YAML libraries yet).
     ```yaml
     apiVersion: apps/v1
     kind: Deployment
@@ -29,14 +29,12 @@ Para fixar o conceito de modularização e manipulação de dados em Python, vam
           - name: app-container
             image: minha-registry/<nome_app>:<imagem_tag>
     ```
-3.  **Script Principal (`main.py`):**
-      * Importe a função de `k8s_util.py`.
-      * Defina variáveis: `app = "api-gateway"`, `tag = "v1.2.3"`, `num_replicas = 3`.
-      * Chame a função para obter o YAML.
-      * **BÔNUS:** Use a função nativa do Python para **escrever este YAML gerado em um arquivo chamado `deployment_<nome_app>.yaml`**.
+3.  **Main Script (`main.py`):**
+      * Import the function from `k8s_util.py`.
+      * Define variables: `app = "api-gateway"`, `tag = "v1.2.3"`, `num_replicas = 3`.
+      * Call the function to get the YAML.
+      * **BONUS:** Use Python's native function to **write this generated YAML to a file named `deployment_<nome_app>.yaml`**.
 
-**Sua Entrega:** O conteúdo dos dois arquivos (`k8s_util.py` e `main.py`) e o resultado do arquivo `.yaml` gerado.
+**Your Delivery:** The content of both files (`k8s_util.py` and `main.py`) and the result of the generated `.yaml` file.
 
-**Dica:** Para escrever o arquivo no Bônus, use o comando `with open('nome_do_arquivo.yaml', 'w') as f: f.write(yaml_string)`.
-
------
+**Tip:** To write the file in the Bonus part, use the command `with open('file_name.yaml', 'w') as f: f.write(yaml_string)`.

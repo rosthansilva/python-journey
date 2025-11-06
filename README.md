@@ -1,81 +1,83 @@
-# 🐍 Python Power-Up para DevOps: K8s & Dagger 🚀
+# 🐍 Python Power-Up for DevOps: K8s & Dagger 🚀
 
-Bem-vindo ao meu repositório de aprendizado acelerado\! Este espaço contém *scripts* e projetos práticos desenvolvidos para solidificar meu conhecimento em Python, com um foco direto na automação de tarefas de **DevOps**, utilizando ferramentas como **Docker**, **Kubernetes** e **Dagger** no meu ambiente **macOS/Colima**.
+Welcome to my accelerated learning repository\! This space contains practical *scripts* and projects developed to solidify my knowledge in Python, with a direct focus on automating **DevOps** tasks, utilizing tools like **Docker**, **Kubernetes**, and **Dagger** on my **macOS/Colima** environment.
 
-Este repositório segue uma progressão estruturada, transformando conhecimentos básicos de Python em ferramentas de engenharia de infraestrutura.
-
------
-
-## ✨ Roteiro da Jornada de Aprendizado
-
-Nossa jornada foi dividida em etapas focadas na aplicação prática:
-
-### Fase 1: Alicerce Python
-
-  * **Foco:** Modularização e lógica básica.
-  * **Desafio 1:** Criação de *scripts* reutilizáveis com geração dinâmica de YAML para K8s.
-
-### Fase 2: Conexão com Infraestrutura
-
-  * **Foco:** Manipulação de dados complexos e modelagem de recursos.
-  * **Desafio 2:** Processamento de JSON aninhado (simulando *output* de API K8s) usando List Comprehensions.
-  * **Desafio 3:** Modelagem de recursos (Container, Deployment) usando **Orientação a Objetos (POO)**.
-
-### Fase 3: Automação e Execução Externa
-
-  * **Foco:** Interagir com o *shell* e construir ferramentas de linha de comando.
-  * **Desafio 4:** Uso do módulo **`subprocess`** para executar comandos `docker` e *parsing* de saída de tabelas.
-  * **Desafio 5:** Construção de uma **CLI profissional** usando **`argparse`** e classes de serviço simuladas para interagir com a API K8s.
-
-### Fase 4: Produção e Persistência
-
-  * **Foco:** Refinamento de ferramentas com *logging* e configuração externa.
-  * **Desafio Final:** Integração de **`logging`** estruturado e gerenciamento de estado persistente usando **`configparser`** para salvar configurações do usuário (`~/.devops_util.ini`).
-
-### Fase 5: Pipeline-as-Code
-
-  * **Foco:** Orquestração de *builds* e testes nativamente em Python.
-  * **Desafio 6:** Definição de um *pipeline* CI/CD completo (`build`, `test`, `publish`) utilizando o **Dagger SDK** em código **assíncrono**.
-
-([https://img.icons8.com/color/48/000000/python.png](https://www.google.com/search?q=https://img.icons8.com/color/48/000000/python.png)) | ([https://img.icons8.com/external-those-icons-lineal-colour/48/external.png](https://www.google.com/search?q=https://img.icons8.com/external-those-icons-lineal-colour/48/external.png)) | ([https://img.icons8.com/fluency/48/docker.png](https://www.google.com/search?q=https://img.icons8.com/fluency/48/docker.png))
+This repository follows a structured progression, transforming basic Python knowledge into infrastructure engineering tools.
 
 -----
 
-## 📂 Estrutura e Execução
+## ✨ Journey Roadmap
 
-Os *scripts* são nomeados de forma a refletir o desafio que abordam.
+Our journey has been divided into stages focused on practical application:
 
-| Arquivo Exemplo | Foco Principal | Requisitos |
+### Phase 1: Python Foundation
+
+  \* **Focus:** Modularity and basic logic.
+  \* **Challenge 1:** Creating reusable *scripts* with dynamic YAML generation for K8s.
+
+### Phase 2: Infrastructure Connection
+
+  \* **Focus:** Complex data manipulation and resource modeling.
+  \* **Challenge 2:** Processing nested JSON (simulating K8s API *output*) using List Comprehensions.
+  \* **Challenge 3:** Modeling resources (Container, Deployment) using **Object-Oriented Programming (OOP)**.
+
+### Phase 3: Automation and External Execution
+
+  \* **Focus:** Interacting with the *shell* and building command-line tools.
+  \* **Challenge 4:** Using the **`subprocess`** module to execute `docker` commands and *parsing* table output.
+  \* **Challenge 5:** Building a **Professional CLI** using **`argparse`** and simulated service classes to interact with the K8s API.
+
+### Phase 4: Production and Persistence
+
+  \* **Focus:** Refining tools with structured *logging* and external configuration.
+  \* **Final Challenge:** Integrating structured **`logging`** and managing persistent state using **`configparser`** to save user settings (`~/.devops_util.ini`).
+
+### Phase 5: Pipeline-as-Code
+
+  \* **Focus:** Orchestrating *builds* and tests natively in Python.
+  \* **Challenge 6:** Defining a complete CI/CD *pipeline* (`build`, `test`, `publish`) using the **Dagger SDK** in **asynchronous** code.
+
+(([https://www.google.com/search?q=https://img.icons8.com/color/48/000000/python.png](https://www.google.com/search?q=https://img.icons8.com/color/48/000000/python.png))) | (([https://www.google.com/search?q=https://img.icons8.com/external-those-icons-lineal-colour/48/external.png](https://www.google.com/search?q=https://img.icons8.com/external-those-icons-lineal-colour/48/external.png))) | (([https://www.google.com/search?q=https://img.icons8.com/fluency/48/docker.png](https://www.google.com/search?q=https://img.icons8.com/fluency/48/docker.png)))
+
+-----
+
+## 📂 Structure and Execution
+
+The *scripts* are named to reflect the challenge they address.
+
+| Example File | Main Focus | Requirements |
 | :--- | :--- | :--- |
-| `k8s_util.py` | Geração de YAML | Básico Python |
-| `data_processor.py` | JSON Parsing, POO | Módulo `json` |
-| `k8s_manager_cli.py` | CLI robusta, Logging, Config | `argparse`, `logging`, `configparser` |
+| `k8s_util.py` | YAML Generation | Basic Python |
+| `data_processor.py` | JSON Parsing, OOP | `json` module |
+| `k8s_manager_cli.py` | Robust CLI, Logging, Config | `argparse`, `logging`, `configparser` |
 | `dagger_pipeline.py` | Pipeline-as-Code | Dagger SDK, `asyncio` |
 
-### Exemplo de Execução (CLI com Persistência - Desafio Final):
+### Example Execution (CLI with Persistence - Final Challenge):
 
-A CLI salva sua preferência de *namespace* no seu `$HOME`, garantindo que a automação seja *stateful*.
+The CLI saves your preferred *namespace* in your `$HOME`, ensuring automation is *stateful*.
 
 ```bash
-# 1. Primeira execução: Cria ~/.devops_util.ini com 'namespace=staging'
-python k8s_manager_cli.py -d api-gateway 
-# INFO:root:Namespace padrão carregado: staging
+# 1. First run: Creates ~/.devops_util.ini with 'namespace=staging'
+python k8s_manager_cli.py -d api-gateway 
+# INFO:root:Default namespace loaded: staging
 
-# 2. Override e atualização da config
+# 2. Override and config update
 python k8s_manager_cli.py -n production -d auth-service
-# INFO:root:Namespace atualizado e persistido para: production
+# INFO:root:Namespace updated and persisted to: production
 
-# 3. Reexecução sem argumentos (usa o valor persistido)
+# 3. Rerun without arguments (uses persisted value)
 python k8s_manager_cli.py -d web-frontend
-# INFO:root:Namespace padrão carregado: production
+# INFO:root:Default namespace loaded: production
 ```
 
 -----
 
-## 🎯 Próximos Passos (Mentoria)
+## 🎯 Next Steps (Mentoring)
 
-A base de *scripting* para automação DevOps está completa\! O próximo passo seria aprofundar em:
+The foundation for DevOps *scripting* is complete\! The next step would be to delve deeper into:
 
-1.  **Concorrência em Python:** Utilizar `asyncio` para otimizar *scripts* que fazem múltiplas chamadas K8s/Cloud em paralelo.
-2.  **Testes Unitários:** Aplicar `unittest` ou `pytest` aos seus *scripts* e classes (como `Container` e `K8sService`).
-3.  **Interação Real com K8s:** Substituir a simulação do `K8sService` pelo cliente oficial **`kubernetes-client`** para interagir com seu cluster Colima.
+1.  **Concurrency in Python:** Utilizing `asyncio` to optimize *scripts* that make multiple K8s/Cloud calls in parallel.
+2.  **Unit Testing:** Applying `unittest` or `pytest` to your *scripts* and classes (like `Container` and `K8sService`).
+3.  **Real K8s Interaction:** Replacing the `K8sService` simulation with the official **`kubernetes-client`** to interact with your Colima cluster.
+
+-----
