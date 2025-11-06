@@ -79,5 +79,3 @@ A base de *scripting* para automação DevOps está completa\! O próximo passo 
 1.  **Concorrência em Python:** Utilizar `asyncio` para otimizar *scripts* que fazem múltiplas chamadas K8s/Cloud em paralelo.
 2.  **Testes Unitários:** Aplicar `unittest` ou `pytest` aos seus *scripts* e classes (como `Container` e `K8sService`).
 3.  **Interação Real com K8s:** Substituir a simulação do `K8sService` pelo cliente oficial **`kubernetes-client`** para interagir com seu cluster Colima.
-
-**Gostaria de focar agora em testes unitários (`pytest`) para garantir a robustez dos seus *scripts*, ou avançar para a concorrência assíncrona (`asyncio`) aplicada a chamadas K8s?**
