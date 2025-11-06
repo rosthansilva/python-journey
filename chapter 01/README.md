@@ -40,7 +40,3 @@ Para fixar o conceito de modularização e manipulação de dados em Python, vam
 **Dica:** Para escrever o arquivo no Bônus, use o comando `with open('nome_do_arquivo.yaml', 'w') as f: f.write(yaml_string)`.
 
 -----
-
-**Próximos Passos:** Assim que você me mostrar a solução para este desafio, podemos avançar para a **Fase 2: Python para Infraestrutura**, focando na leitura robusta de **JSON/YAML** (usando a biblioteca `PyYAML`) e como usar a biblioteca `requests` para "conversar" com a API do Kubernetes (simuladamente, inicialmente).
-
-**Você está pronto para começar este desafio?**
